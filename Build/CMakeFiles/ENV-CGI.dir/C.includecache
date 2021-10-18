@@ -9,6 +9,8 @@
 /home/pi/Embedded2/Opdracht2-CGI/env-cgi.c
 stdio.h
 -
+time.h
+-
 stdlib.h
 -
 

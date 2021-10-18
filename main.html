@@ -21,7 +21,7 @@
                 <thead>
                     <tr>
                         <th> Firstname </th>
-                        <th> Lastname </th>
+                        <th> Added Date</th>
                     </tr>
                 </thead>
                 <tbody id="tbody">
@@ -31,7 +31,7 @@
         </div>
 
         <form action="/cgi-bin/ENV-CGI/" method="post">
-            <input type="text" name="test" id="test">
+            <input type="text" name="name" id="name">
             <button type="submit">Add</button>
         </form>
         
@@ -51,9 +51,9 @@
         async function renderNames(){
             let names = await getNames();
             let html = '';
-            names.forEach(firstName => {
-                let htmlSegment = `<tr><td>${firstName.firstName}</td>
-                                    <td>${firstName.lastName}</td></tr>`;
+            names.forEach(name => {
+                let htmlSegment = `<tr><td>${name.name}</td>
+                                    <td>${name.submit_date}</td></tr>`;
                 html += htmlSegment;
             });
             var table = document.getElementById("tbody");
