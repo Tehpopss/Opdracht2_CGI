@@ -17,11 +17,45 @@
 </head>
     <body>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table" id="table">
+                <thead>
+                    <tr>
+                        <th> Firstname </th>
+                        <th> Lastname </th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
 
+                </tbody>
             </table>
         </div>
         
     
     </body>
+
+    <script>
+        async function getNames(){
+            let url = 'main.json';
+            try {
+                let res = await fetch(url);
+                return await res.json();
+            }catch (error){
+                console.log(error);
+            }
+        }
+        async function renderNames(){
+            let names = await getNames();
+            let html = '';
+            names.forEach(firstName => {
+                let htmlSegment = `<tr><td>${firstName.firstName}</td>
+                                    <td>${firstName.lastName}</td></tr>`;
+                html += htmlSegment;
+            });
+            var table = document.getElementById("tbody");
+            table.innerHTML = html;
+        }
+
+        renderNames();
+
+    </script>
 </html>
